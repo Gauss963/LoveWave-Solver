@@ -1,0 +1,3 @@
+/Users/gausschang/Documents/University/Year5-2/Principles of Seismology/LoveWave/build/CMakeFiles/main.dir
+/Users/gausschang/Documents/University/Year5-2/Principles of Seismology/LoveWave/build/CMakeFiles/edit_cache.dir
+/Users/gausschang/Documents/University/Year5-2/Principles of Seismology/LoveWave/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build C++",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-std=c++11",
+                "-I", "/opt/homebrew/include/eigen3",
+                "-o", "main",
+                "main.cc",
+                "utils.cc",
+                "LoveWave.cc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
