@@ -16,7 +16,7 @@ This project implements a Love wave simulation using C++. It consists of multipl
 ### Dependencies
 - C++ compiler (GCC, Clang, or equivalent)
 - [CMake](https://cmake.org/) (for building the project)
-- [Eigen](https://eigen.tuxfamily.org) (if used in the implementation)
+- [Eigen](https://eigen.tuxfamily.org) (already included)
 
 ### Building the Project
 
@@ -37,7 +37,7 @@ This project implements a Love wave simulation using C++. It consists of multipl
 After compilation, run the program using:
 
 ```zsh
-./love_wave
+./main
 ```
 
 
