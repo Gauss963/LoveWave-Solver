@@ -1,5 +1,3 @@
-Here is a README.md file for your project:
-
 # Love Wave Simulation
 
 This project implements a Love wave simulation using C++. It consists of multiple source files for wave modeling and utility functions.
@@ -11,37 +9,47 @@ This project implements a Love wave simulation using C++. It consists of multipl
 - **`utils.hh`** - Header file for utility functions used across the project.
 - **`utils.cc`** - Implementation of utility functions.
 - **`main.cc`** - Entry point of the simulation, where the Love wave model is instantiated and executed.
+- **`CMakeLists.txt`** - CMake build configuration file.
 
 ## Compilation and Usage
 
 ### Dependencies
 - C++ compiler (GCC, Clang, or equivalent)
+- [CMake](https://cmake.org/) (for building the project)
 - [Eigen](https://eigen.tuxfamily.org) (if used in the implementation)
 
-### Compilation
-Run the following command to compile the project:
+### Building the Project
+
+1. Create a build directory:
+   ```zsh
+   mkdir build && cd build
+   ```
+2.	Run CMake to configure the project:
+	```zsh
+	cmake ..
+	```
+3.	Compile the project:
+	```zsh
+	make
+	```
+4.	Execution
+
+After compilation, run the program using:
+
 ```zsh
-g++ -o love_wave main.cc LoveWave.cc utils.cc -I/path/to/eigen -O2
-```
-Replace /path/to/eigen with the actual path to the Eigen library if needed.
-
-Execution
-
-After compilation, execute the program using:
-
 ./love_wave
+```
 
-Features
+
+### Features
 	•	Love wave propagation modeling
 	•	Numerical computations for wave behavior
 	•	Utility functions for mathematical operations
 
-License
+## License
 
-This project is open-source. Modify and distribute as needed.
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 Author
 
 Gauss Chang
-
-Let me know if you need modifications!
