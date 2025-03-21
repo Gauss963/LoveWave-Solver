@@ -42,9 +42,9 @@ After compilation, run the program using:
 
 
 ## Features
-• Love wave propagation modeling
-• Numerical computations for wave behavior
-• Utility functions for mathematical operations
+- Love wave propagation modeling
+- Numerical computations for wave behavior
+- Utility functions for mathematical operations
 
 ## License
 
