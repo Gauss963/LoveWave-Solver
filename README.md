@@ -34,11 +34,11 @@ This project implements a Love wave simulation using C++. It consists of multipl
 	```
 4.	Execution
 
-After compilation, run the program using:
+	After compilation, run the program using:
 
-```zsh
-./main
-```
+	```zsh
+	./main
+	```
 
 
 ## Features
