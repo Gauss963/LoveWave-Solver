@@ -1,5 +1,11 @@
 # Love Wave Simulation
 
+![Standard](https://img.shields.io/badge/Standard-C++23-indigo)
+![Platform](https://img.shields.io/badge/Platform-win%E2%80%9464%20%7C%20MacOS%E2%80%94arm64%20%7C%20linux%E2%80%94aarch64%20%7C%20linux%E2%80%9464%20%7C%20MacOS%E2%80%9464-clelery)
+![Compiler](https://img.shields.io/badge/Compiler-Apple_Clang_Tested-Red)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
+
 This project implements a Love wave simulation using C++. It consists of multiple source files for wave modeling and utility functions.
 
 ## File Structure
