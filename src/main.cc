@@ -18,8 +18,8 @@ int main() {
     std::vector<double> cObserved = { 4130, 3529, 3427, 3346 };
 
     LoveWave lovaWave(structure);
-    // std::vector<double> frequencies_plot = linspace(0.01, 0.40, 1024);
-    std::vector<double> frequencies_plot = linspace(0.01, 1.60, 8192);
+    std::vector<double> frequencies_plot = linspace(0.01, 0.40, 8192);
+    // std::vector<double> frequencies_plot = linspace(0.01, 1.60, 8192);
     std::vector<double> cTheoretical = lovaWave.getDispersion(frequencies);
     std::vector<double> cTheoretical_plot = lovaWave.getDispersion(frequencies_plot);
     saveVectorsToBinary(frequencies_plot, cTheoretical_plot, "../data/data.bin");
