@@ -28,7 +28,7 @@ This project implements a Love wave simulation using C++. It consists of multipl
 
 1. Create a build directory:
    ```zsh
-   mkdir build && cd build
+   rm -rf ./build && mkdir build && cd build
    ```
 2.	Run CMake to configure the project:
 	```zsh
