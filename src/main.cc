@@ -11,20 +11,24 @@ int main() {
         3000.0,
         2800.0,
         5000.0,
-        3300.0
+        3200.0
     };
 
     std::vector<double> frequencies  = { 0.08, 0.15, 0.18, 0.22 };
     std::vector<double> cObserved = { 4130, 3529, 3427, 3346 };
 
     LoveWave lovaWave(structure);
+    std::vector<double> frequencies_plot = linspace(0.01, 0.40, 1024);
     std::vector<double> cTheoretical = lovaWave.getDispersion(frequencies);
+    std::vector<double> cTheoretical_plot = lovaWave.getDispersion(frequencies_plot);
+    saveVectorsToBinary(frequencies_plot, cTheoretical_plot, "../data/data.bin");
 
     std::cout << "\n== Theoretical dispersion == by C++\n";
     for (size_t i = 0; i < frequencies.size(); ++i) {
         std::cout << "f = " << frequencies[i]
                   << " Hz => c_Theoretical = " << cTheoretical[i] << " m/s\n";
     }
+
 
     double deltaV1 = 1.0;  
     double deltaV2 = 1.0;

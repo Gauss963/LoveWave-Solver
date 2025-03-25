@@ -1,6 +1,7 @@
 #include "utils.hh"
 #include "LoveWave.hh"
 
+#include <fstream>
 #include <Eigen/Dense>
 #include <cmath>
 #include <iostream>
@@ -87,4 +88,37 @@ LoveWaveParams inversion(const LoveWaveParams& initParams,
     outParams.b2 = new_b2;
     
     return outParams;
+}
+
+std::vector<double> linspace(double start, double end, std::size_t num) {
+    std::vector<double> result;
+    result.reserve(num);
+    if (num == 0) return result;
+    if (num == 1) {
+        result.push_back(start);
+        return result;
+    }
+
+    double step = (end - start) / (num - 1);
+    for (std::size_t i = 0; i < num; ++i) {
+        result.push_back(start + step * i);
+    }
+    return result;
+}
+
+void saveVectorsToBinary(const std::vector<double>& frequencies_plot,
+                         const std::vector<double>& cTheoretical_plot,
+                         const std::string& filename) {
+    std::ofstream out(filename, std::ios::binary);
+    if (!out) {
+        throw std::runtime_error("Cannot open file for writing: " + filename);
+    }
+
+    size_t size = frequencies_plot.size();
+    out.write(reinterpret_cast<const char*>(&size), sizeof(size));
+
+    out.write(reinterpret_cast<const char*>(frequencies_plot.data()), size * sizeof(double));
+    out.write(reinterpret_cast<const char*>(cTheoretical_plot.data()), size * sizeof(double));
+
+    out.close();
 }

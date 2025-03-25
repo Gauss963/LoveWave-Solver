@@ -92,5 +92,6 @@
     },
     "python-envs.defaultEnvManager": "ms-python.python:conda",
     "python-envs.defaultPackageManager": "ms-python.python:conda",
-    "python-envs.pythonProjects": []
+    "python-envs.pythonProjects": [],
+    "cmake.sourceDirectory": "/Users/gausschang/Documents/University/Year5-2/Principles of Seismology/LoveWave/src/eigen"
 }
