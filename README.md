@@ -45,6 +45,9 @@ This project implements a Love wave simulation using C++. It consists of multipl
 	```zsh
 	./main
 	```
+5.  Plot
+
+	If you want to  plot $c(\omega)$, $U(\omega)$, plot with `plot_from_cc.ipynb`.
 
 
 ## Features
