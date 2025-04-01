@@ -42,8 +42,7 @@ int main() {
     newParams[0] = inversion(structure, cTheoretical, cObserved,
                             deltaV1, deltaV2, frequencies);
     for (int ii = 1; ii < iterNum; ii++) {
-        newParams[ii] = inversion(newParams[ii - 1], cTheoretical, cObserved,
-                                deltaV1, deltaV2, frequencies);
+        newParams[ii] = inversion(newParams[ii - 1], cTheoretical, cObserved, deltaV1, deltaV2, frequencies);
     }
 
     std::cout << "\n== Inversion result ==\n";
