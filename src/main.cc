@@ -20,7 +20,7 @@ int main() {
     std::vector<double> cObserved = { 3721, 3191, 3087, 3050, 3023 };
 
     LoveWave lovaWave(structure);
-    std::vector<double> frequencies_plot = linspace(0.01, 0.70, 8192);
+    std::vector<double> frequencies_plot = linspace(0.01, .70, 8192);
     // std::vector<double> frequencies_plot = linspace(0.01, 1.60, 8192);
     std::vector<double> cTheoretical = lovaWave.getDispersion(frequencies);
     std::vector<double> cTheoretical_plot = lovaWave.getDispersion(frequencies_plot);
@@ -36,15 +36,29 @@ int main() {
     double deltaV1 = 10.0;
     double deltaV2 = 10.0;
 
-    LoveWaveParams newParams = inversion(structure, cTheoretical, cObserved,
-                                         deltaV1, deltaV2, frequencies);
+    // int iterNum = 100000;
+    int iterNum = 1;
+    std::vector<LoveWaveParams> newParams(iterNum);
+    newParams[0] = inversion(structure, cTheoretical, cObserved,
+                            deltaV1, deltaV2, frequencies);
+    for (int ii = 1; ii < iterNum; ii++) {
+        newParams[ii] = inversion(newParams[ii - 1], cTheoretical, cObserved,
+                                deltaV1, deltaV2, frequencies);
+    }
 
     std::cout << "\n== Inversion result ==\n";
-    if (std::isnan(newParams.b1) || std::isnan(newParams.b2)) {
+    if (std::isnan(newParams.back().b1) || std::isnan(newParams.back().b2)) {
         std::cout << "Singular or invalid matrix, cannot invert.\n";
     } else {
-        std::cout << "Updated b1 = " << newParams.b1 << " m/s\n";
-        std::cout << "Updated b2 = " << newParams.b2 << " m/s\n";
+        std::cout << "Updated b1 = " << newParams.back().b1 << " m/s\n";
+        std::cout << "Updated b2 = " << newParams.back().b2 << " m/s\n";
+    }
+
+    std::cout << "\n== After Pertubation ==\n";
+    LoveWave lovaWavePertub(newParams.back());
+    for (size_t i = 0; i < frequencies.size(); ++i) {
+        std::cout << "f = " << frequencies[i]
+                  << " Hz => c_Theoretical_P = " << lovaWavePertub.getDispersion(frequencies)[i] << " m/s\n";
     }
 
     return 0;

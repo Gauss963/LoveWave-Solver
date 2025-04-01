@@ -45,8 +45,8 @@ LoveWaveParams inversion(const LoveWaveParams& initParams,
         LoveWave lw_p(paramsPert);
         std::vector<double> c_p = lw_p.getDispersion(frequencies);
 
-        std::cout << "pertub b1: " << std::endl; // See pertubation b1 reslut.
-        printVector(c_p);                        // See pertubation b1 reslut.
+        // std::cout << "pertub b1: " << std::endl; // See pertubation b1 reslut.
+        // printVector(c_p);                        // See pertubation b1 reslut.
 
         for (size_t i = 0; i < N; ++i) {
             double diff = c_p[i] - cTheoretical[i];
@@ -62,8 +62,8 @@ LoveWaveParams inversion(const LoveWaveParams& initParams,
         LoveWave lw_p(paramsPert);
         std::vector<double> c_p = lw_p.getDispersion(frequencies);
 
-        std::cout << "pertub b1: " << std::endl; // See pertubation b2 reslut.
-        printVector(c_p);                        // See pertubation b2 reslut.
+        // std::cout << "pertub b2: " << std::endl; // See pertubation b2 reslut.
+        // printVector(c_p);                        // See pertubation b2 reslut.
 
         for (size_t i = 0; i < N; ++i) {
             double diff = c_p[i] - cTheoretical[i];
