@@ -14,11 +14,13 @@ int main() {
         3200.0
     };
 
-    std::vector<double> frequencies  = { 0.08, 0.15, 0.18, 0.22 };
-    std::vector<double> cObserved = { 4130, 3529, 3427, 3346 };
+    // std::vector<double> frequencies  = { 0.08, 0.15, 0.18, 0.22 };
+    std::vector<double> frequencies  = { 0.1, 0.2, 0.3, 0.4, 0.6 };
+    // std::vector<double> cObserved = { 4130, 3529, 3427, 3346 };
+    std::vector<double> cObserved = { 3721, 3191, 3087, 3050, 3023 };
 
     LoveWave lovaWave(structure);
-    std::vector<double> frequencies_plot = linspace(0.01, 0.40, 8192);
+    std::vector<double> frequencies_plot = linspace(0.01, 0.70, 8192);
     // std::vector<double> frequencies_plot = linspace(0.01, 1.60, 8192);
     std::vector<double> cTheoretical = lovaWave.getDispersion(frequencies);
     std::vector<double> cTheoretical_plot = lovaWave.getDispersion(frequencies_plot);
@@ -31,8 +33,8 @@ int main() {
     }
 
 
-    double deltaV1 = 1.0;  
-    double deltaV2 = 1.0;
+    double deltaV1 = 10.0;
+    double deltaV2 = 10.0;
 
     LoveWaveParams newParams = inversion(structure, cTheoretical, cObserved,
                                          deltaV1, deltaV2, frequencies);

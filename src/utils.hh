@@ -8,6 +8,8 @@ void saveVectorsToBinary(const std::vector<double>& frequencies_plot,
     const std::vector<double>& cTheoretical_plot,
     const std::string& filename);
 
+void printVector(const std::vector<double>& signal);
+
 std::vector<double> linspace(double start, double end, std::size_t num);
 
 LoveWaveParams inversion(const LoveWaveParams& initParams,

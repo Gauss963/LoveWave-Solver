@@ -45,6 +45,9 @@ LoveWaveParams inversion(const LoveWaveParams& initParams,
         LoveWave lw_p(paramsPert);
         std::vector<double> c_p = lw_p.getDispersion(frequencies);
 
+        std::cout << "pertub b1: " << std::endl; // See pertubation b1 reslut.
+        printVector(c_p);                        // See pertubation b1 reslut.
+
         for (size_t i = 0; i < N; ++i) {
             double diff = c_p[i] - cTheoretical[i];
             G(i, 0) = diff / deltaV1;
@@ -58,6 +61,9 @@ LoveWaveParams inversion(const LoveWaveParams& initParams,
 
         LoveWave lw_p(paramsPert);
         std::vector<double> c_p = lw_p.getDispersion(frequencies);
+
+        std::cout << "pertub b1: " << std::endl; // See pertubation b2 reslut.
+        printVector(c_p);                        // See pertubation b2 reslut.
 
         for (size_t i = 0; i < N; ++i) {
             double diff = c_p[i] - cTheoretical[i];
@@ -121,4 +127,12 @@ void saveVectorsToBinary(const std::vector<double>& frequencies_plot,
     out.write(reinterpret_cast<const char*>(cTheoretical_plot.data()), size * sizeof(double));
 
     out.close();
+}
+
+void printVector(const std::vector<double> &signal) {
+    std::cout << "[ ";
+    for(int ii = 0; ii < signal.size(); ii++) {
+        std::cout << signal[ii] << ", ";
+    }
+    std::cout << "]" << std::endl;
 }
