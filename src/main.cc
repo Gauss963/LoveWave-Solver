@@ -28,13 +28,20 @@ int main() {
     std::vector<double> cTheoretical_plot = lovaWave.getDispersion(frequencies_plot);
     saveVectorsToBinary(frequencies_plot, cTheoretical_plot, "../data/data.bin");
 
+
+    std::cout << "\n== Before Inversion ==\n";
+    if (std::isnan(structure.b1) || std::isnan(structure.b2)) {
+        std::cout << "Singular or invalid matrix, cannot invert.\n";
+    } else {
+        std::cout << "Initial b1 = " << structure.b1 << " m/s\n";
+        std::cout << "Initial b2 = " << structure.b2 << " m/s\n";
+    }
     std::cout << "\n== Theoretical dispersion == by C++\n";
     for (size_t i = 0; i < frequencies.size(); ++i) {
         std::cout << "f = " << frequencies[i]
                   << " Hz => c_Theoretical = " << cTheoretical[i] << " m/s\n";
     }
-
-    std::cout << "b1: " << structure.b1 << ", b2: " << structure.b2 << std::endl;
+    std::cout << "\n== Inversion... ==\n";
 
 
     double deltaV1 = 10.0;
