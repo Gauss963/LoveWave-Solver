@@ -8,15 +8,17 @@
 int main() {
     LoveWaveParams structure = {
         10000.0,
-        3000.0,
+        // 3000.0,
+        2500.0,
         2800.0,
-        5000.0,
+        // 5000.0,
+        4200.0,
         3200.0
     };
 
     // std::vector<double> frequencies  = { 0.08, 0.15, 0.18, 0.22 };
-    std::vector<double> frequencies  = { 0.1, 0.2, 0.3, 0.4, 0.6 };
     // std::vector<double> cObserved = { 4130, 3529, 3427, 3346 };
+    std::vector<double> frequencies  = { 0.1, 0.2, 0.3, 0.4, 0.6 };
     std::vector<double> cObserved = { 3721, 3191, 3087, 3050, 3023 };
 
     LoveWave lovaWave(structure);
@@ -32,17 +34,30 @@ int main() {
                   << " Hz => c_Theoretical = " << cTheoretical[i] << " m/s\n";
     }
 
+    std::cout << "b1: " << structure.b1 << ", b2: " << structure.b2 << std::endl;
+
 
     double deltaV1 = 10.0;
     double deltaV2 = 10.0;
 
     // int iterNum = 100000;
-    int iterNum = 1;
-    std::vector<LoveWaveParams> newParams(iterNum);
-    newParams[0] = inversion(structure, cTheoretical, cObserved,
-                            deltaV1, deltaV2, frequencies);
+    int iterNum = 10;
+    // std::vector<LoveWaveParams> newParams(iterNum);
+    std::vector<LoveWaveParams> newParams;
+    std::vector<LoveWave> LoveWaveIters;
+
+    // newParams[0] = inversion(structure, cTheoretical, cObserved, deltaV1, deltaV2, frequencies);
+    newParams.push_back(inversion(structure, cTheoretical, cObserved, deltaV1, deltaV2, frequencies));
+    LoveWaveIters.push_back(LoveWave(newParams[0]));
+
+                    
     for (int ii = 1; ii < iterNum; ii++) {
-        newParams[ii] = inversion(newParams[ii - 1], cTheoretical, cObserved, deltaV1, deltaV2, frequencies);
+        std::vector<double> cTheoreticalIter = LoveWaveIters[ii - 1].getDispersion(frequencies);
+        // newParams[ii] = inversion(newParams[ii - 1], cTheoreticalIter, cObserved, deltaV1, deltaV2, frequencies);
+        newParams.push_back(inversion(newParams[ii - 1], cTheoreticalIter, cObserved, deltaV1, deltaV2, frequencies));
+        LoveWaveIters.push_back(LoveWave(newParams[ii]));
+
+        std::cout << "b1: " << newParams[ii].b1 << ", b2: " << newParams[ii].b2 << std::endl;
     }
 
     std::cout << "\n== Inversion result ==\n";
