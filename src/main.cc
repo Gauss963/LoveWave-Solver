@@ -41,7 +41,7 @@ int main() {
         std::cout << "f = " << frequencies[i]
                   << " Hz => c_Theoretical = " << cTheoretical[i] << " m/s\n";
     }
-    std::cout << "\n== Inversion... ==\n";
+    std::cout << "\n== Inversion using Pertubation ==\n";
 
 
     double deltaV1 = 10.0;
@@ -72,7 +72,7 @@ int main() {
         std::cout << "Updated b2 = " << newParams.back().b2 << " m/s\n";
     }
 
-    std::cout << "\n== After Pertubation ==\n";
+    std::cout << "\n== After Inversion ==\n";
     LoveWave lovaWavePertub(newParams.back());
     for (size_t i = 0; i < frequencies.size(); ++i) {
         std::cout << "f = " << frequencies[i]
