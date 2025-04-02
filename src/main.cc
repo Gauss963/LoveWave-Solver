@@ -9,7 +9,7 @@ int main() {
     LoveWaveParams structure = {
         10000.0,
         // 3000.0,
-        2500.0,
+        2200.0,
         2800.0,
         // 5000.0,
         4200.0,
@@ -42,22 +42,19 @@ int main() {
 
     // int iterNum = 100000;
     int iterNum = 10;
-    // std::vector<LoveWaveParams> newParams(iterNum);
     std::vector<LoveWaveParams> newParams;
     std::vector<LoveWave> LoveWaveIters;
 
-    // newParams[0] = inversion(structure, cTheoretical, cObserved, deltaV1, deltaV2, frequencies);
     newParams.push_back(inversion(structure, cTheoretical, cObserved, deltaV1, deltaV2, frequencies));
     LoveWaveIters.push_back(LoveWave(newParams[0]));
 
                     
     for (int ii = 1; ii < iterNum; ii++) {
         std::vector<double> cTheoreticalIter = LoveWaveIters[ii - 1].getDispersion(frequencies);
-        // newParams[ii] = inversion(newParams[ii - 1], cTheoreticalIter, cObserved, deltaV1, deltaV2, frequencies);
         newParams.push_back(inversion(newParams[ii - 1], cTheoreticalIter, cObserved, deltaV1, deltaV2, frequencies));
         LoveWaveIters.push_back(LoveWave(newParams[ii]));
 
-        std::cout << "b1: " << newParams[ii].b1 << ", b2: " << newParams[ii].b2 << std::endl;
+        std::cout << "Iter: " << ii << ", b1: " << newParams[ii].b1 << ", b2: " << newParams[ii].b2 << std::endl;
     }
 
     std::cout << "\n== Inversion result ==\n";
