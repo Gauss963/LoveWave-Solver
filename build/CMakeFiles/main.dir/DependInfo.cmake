@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/gausschang/Documents/University/Year5-2/Principles of Seismology/LoveWave/src/LoveWave.cc" "CMakeFiles/main.dir/src/LoveWave.cc.o" "gcc" "CMakeFiles/main.dir/src/LoveWave.cc.o.d"
-  "/Users/gausschang/Documents/University/Year5-2/Principles of Seismology/LoveWave/src/main.cc" "CMakeFiles/main.dir/src/main.cc.o" "gcc" "CMakeFiles/main.dir/src/main.cc.o.d"
-  "/Users/gausschang/Documents/University/Year5-2/Principles of Seismology/LoveWave/src/utils.cc" "CMakeFiles/main.dir/src/utils.cc.o" "gcc" "CMakeFiles/main.dir/src/utils.cc.o.d"
+  "/Users/gausschang/Documents/University/Year6-2/Principles of Seismology/LoveWave/src/LoveWave.cc" "CMakeFiles/main.dir/src/LoveWave.cc.o" "gcc" "CMakeFiles/main.dir/src/LoveWave.cc.o.d"
+  "/Users/gausschang/Documents/University/Year6-2/Principles of Seismology/LoveWave/src/main.cc" "CMakeFiles/main.dir/src/main.cc.o" "gcc" "CMakeFiles/main.dir/src/main.cc.o.d"
+  "/Users/gausschang/Documents/University/Year6-2/Principles of Seismology/LoveWave/src/utils.cc" "CMakeFiles/main.dir/src/utils.cc.o" "gcc" "CMakeFiles/main.dir/src/utils.cc.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

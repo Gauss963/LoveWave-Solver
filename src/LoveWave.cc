@@ -40,7 +40,7 @@ double LoveWave::solveC(double omega, double tol, int max_iter) const {
     if (scanLeft >= scanRight) {
         return -1.0;
     }
-    const int numSteps = 5000;
+    const int numSteps = 50000;
     double step = (scanRight - scanLeft) / static_cast<double>(numSteps);
 
     double left = scanLeft;

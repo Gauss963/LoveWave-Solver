@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <cstdlib>
+#include <filesystem>
 
 int main() {
     LoveWaveParams structure = {
@@ -22,11 +23,12 @@ int main() {
     std::vector<double> cObserved = { 3721, 3191, 3087, 3050, 3023 };
 
     LoveWave lovaWave(structure);
-    std::vector<double> frequencies_plot = linspace(0.01, .70, 8192);
+    std::vector<double> frequencies_plot = linspace(0.01, 0.70, 32768);
     // std::vector<double> frequencies_plot = linspace(0.01, 1.60, 8192);
     std::vector<double> cTheoretical = lovaWave.getDispersion(frequencies);
     std::vector<double> cTheoretical_plot = lovaWave.getDispersion(frequencies_plot);
-    saveVectorsToBinary(frequencies_plot, cTheoretical_plot, "../data/data.bin");
+    const auto outputPath = std::filesystem::path(PROJECT_SOURCE_DIR) / "data" / "data.bin";
+    saveVectorsToBinary(frequencies_plot, cTheoretical_plot, outputPath.string());
 
 
     std::cout << "\n== Before Inversion ==\n";

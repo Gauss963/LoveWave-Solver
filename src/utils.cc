@@ -2,6 +2,7 @@
 #include "LoveWave.hh"
 
 #include <fstream>
+#include <filesystem>
 #include <Eigen/Dense>
 #include <cmath>
 #include <iostream>
@@ -115,7 +116,12 @@ std::vector<double> linspace(double start, double end, std::size_t num) {
 void saveVectorsToBinary(const std::vector<double>& frequencies_plot,
                          const std::vector<double>& cTheoretical_plot,
                          const std::string& filename) {
-    std::ofstream out(filename, std::ios::binary);
+    const std::filesystem::path outputPath(filename);
+    if (outputPath.has_parent_path()) {
+        std::filesystem::create_directories(outputPath.parent_path());
+    }
+
+    std::ofstream out(outputPath, std::ios::binary);
     if (!out) {
         throw std::runtime_error("Cannot open file for writing: " + filename);
     }

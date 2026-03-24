@@ -2,6 +2,7 @@
 #define UTILS_HH
 
 #include "LoveWave.hh"
+#include <string>
 #include <vector>
 
 void saveVectorsToBinary(const std::vector<double>& frequencies_plot,
