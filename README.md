@@ -17,37 +17,70 @@ This project implements a Love wave simulation using C++. It consists of multipl
 - **`main.cc`** - Entry point of the simulation, where the Love wave model is instantiated and executed.
 - **`CMakeLists.txt`** - CMake build configuration file.
 
-## Compilation and Usage
+## Getting Started
 
 ### Dependencies
-- C++ compiler (GCC, Clang, or equivalent; Clang conformed.)
-- [CMake](https://cmake.org/) (for building the project)
-- [Eigen](https://eigen.tuxfamily.org) (already included)
+- C++17 compiler or newer (GCC, Clang, or equivalent)
+- [CMake](https://cmake.org/) 3.10 or newer
+- Eigen is vendored in `src/eigen`, so no separate installation is required
 
-### Building the Project
+### Clone the Repository
 
-1. Create a build directory:
-   ```zsh
-   rm -rf ./build && mkdir build && cd build
-   ```
-2.	Run CMake to configure the project:
-	```zsh
-	cmake ..
-	```
-3.	Compile the project:
-	```zsh
-	make
-	```
-4.	Execution
+```zsh
+git clone git@github.com:Gauss963/LoveWave-Solver.git
+cd LoveWave-Solver
+```
 
-	After compilation, run the program using:
+If you use HTTPS instead of SSH:
 
-	```zsh
-	./main
-	```
-5.  Plot
+```zsh
+git clone https://github.com/Gauss963/LoveWave-Solver.git
+cd LoveWave-Solver
+```
 
-	If you want to  plot $c(\omega)$, $U(\omega)$, plot with `plot_from_cc.ipynb`.
+### Build the Project
+
+```zsh
+cmake -S . -B build
+cmake --build build -j4
+```
+
+### Run
+
+```zsh
+./build/main
+```
+
+The program writes the dispersion output to `data/data.bin`.
+
+### Rebuild from Scratch
+
+If you moved the project directory or an old CMake cache points to a previous path, remove the build directory and configure again:
+
+```zsh
+rm -rf build
+cmake -S . -B build
+cmake --build build -j4
+```
+
+### HPC Notes
+
+- If the repository was cloned before the Eigen header fix, update the repository and rebuild:
+
+```zsh
+git pull
+rm -rf build
+cmake -S . -B build
+cmake --build build -j4
+```
+
+- The previous HPC error
+  `fatal error: Core: No such file or directory`
+  was caused by missing vendored Eigen files in the Git repository, not by CMake itself.
+
+### Plot
+
+If you want to plot $c(\omega)$ or $U(\omega)$, use `src/plot_from_cc.ipynb`.
 
 
 ## Features
