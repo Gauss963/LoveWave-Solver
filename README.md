@@ -63,6 +63,10 @@ cmake -S . -B build
 cmake --build build -j4
 ```
 
+### Continuous Integration and Release
+
+GitHub Actions builds the project on a macOS runner for pull requests targeting `main` and pushes to `main`. After the first successful build on `main`, it automatically creates the `v1.0.0` GitHub Release. Later builds leave the existing release and tag unchanged.
+
 ### HPC Notes
 
 - If the repository was cloned before the Eigen header fix, update the repository and rebuild:
